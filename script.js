@@ -15,13 +15,15 @@ function getHumanChoice() {
     return prompt(`Rock, Paper, Scissors`)
 }
 
-let humanScore = 0
-let computerScore = 0
+
+function playGame() {
+
+    let humanScore = 0
+    let computerScore = 0
 
 function playRound(humanChoice, computerChoice) {
     const humanSelection = humanChoice.toLowerCase()
     const computerSelection = computerChoice.toLowerCase()
-    console.log(humanSelection, computerSelection);
     if(humanChoice === computerChoice) {console.log(`Draw! Try again!`);
     } 
     else if(humanSelection === `rock` && computerSelection === `paper`){ console.log(`You lose! Paper beats Rock!`);
@@ -43,5 +45,17 @@ function playRound(humanChoice, computerChoice) {
         humanScore++
     }
 }
+    for(let i = 0 ; i<5; i++){
+        playRound(getHumanChoice(), getComputerChoice())
+    }
+    console.log(`Human score: ${humanScore}
+Computer score: ${computerScore}`);
+    
 
-playRound(getHumanChoice(),getComputerChoice())
+    if(humanScore > computerScore) console.log(`_______You WON!_______`);
+    else if(humanScore === computerScore) console.log(`_______DRAW!_______`);
+    else console.log(`_______You LOSE!_______`);   
+}
+
+playGame()
+
